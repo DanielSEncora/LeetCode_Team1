@@ -3,82 +3,38 @@ import java.util.Set;
 
 public class Main {
     public static void main(String[] args){
+        String s = "pwwkew";
+        System.out.println(lengthOfLongestSubstring(s));
+    }
+
+    public static int lengthOfLongestSubstring(String s) {
         int max = 0;
         int izq = 0;
 
         Set<Object> charSet = new HashSet<>();
-        String secuencia = "pwwkew";
 
-        for(char chars: secuencia.toCharArray()){
-            if(charSet.add(chars)){
-                max++;
-            }else{
-                
-            }
-        }
-
-
-        System.out.println(charSet);
-
-        /*
-        max= 0
-        izq=0
-        recorrer el string
-        loop si set tiene string[i]:
-
-        Set delete string[izq]
-
-        izq++
-
-        max = el mayor de max o (i-izq+1)
-
-        set add string[i]
+        //While loop that that iterates until we have done all possible combinations of substrings.
+        while(izq < s.length()) {
+            //Goes through each character of the String
+            for (char chars : s.substring(izq).toCharArray()) {
+                /*
+                    Adds the character to the Set, if set.add returns false, then it saves the length of the set if it's superior than
+                    the current max
                 */
-
-    }
-}
-
-        /*  TODO:
-            Convertir string en arreglo de chars
-            actual
-            max
-
-            String palabra = "tale"
-            Set = [c]
-            iterador = 3
-            iteradorMax = 4
-
-            "abcc"
-
-            loop{
-                si ! SET.has string[i]
-                    agregar string[i]
-                    iterador++
-                else{
-                    newString = palabra.substring() //eliminando caracter hasta izquierda
-                    if iterador > iteradorMax
-                        iteradorMax = iterador
-
-                    i=0
-                    iterador = 0
-
+                if (!charSet.add(chars)) {
+                    if (charSet.size() > max) {
+                        max = charSet.size();
+                    }
+                    // Sums 1 to the izq value so that we can try again this time starting from the x+1 character.
+                    izq++;
+                    //Clears the set
+                    charSet.clear();
+                    //Re-starts the fore loop this time with distinct izq and max values.
+                    break;
                 }
             }
-
-            return iteradorMax
-
-
-        max= 0
-        izq=0
-        recorrer el string
-            loop si set tiene string[i]:
-
-                Set delete string[izq]
-
-                izq++
-
-            max = el mayor de max o (i-izq+1)
-
-            set add string[i]
-
-        */
+        }
+        //Returns length of longest substring
+        return max;
+    }
+}
