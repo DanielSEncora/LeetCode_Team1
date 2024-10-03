@@ -38,8 +38,6 @@ class LRUCache:
             else:
                 self.outAndConnect(secondToLast)
                 self.insertAtHead(node)
-                print(key)
-                print('second' ,secondToLast.key)
                 del self.map[secondToLast.key]
                 self.map[key] = node
             return

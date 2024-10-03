@@ -5,5 +5,6 @@ class Solution:
         mid = len(arr) // 2 
         arr.sort()
         if len(arr) % 2 == 0:
-            return (arr[mid] + arr[mid - 1]) / 2
+            return (arr[mid] + arr[mid - 1]) / 2    
         return arr[mid]
+            
