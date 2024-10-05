@@ -3,7 +3,7 @@ import java.util.Set;
 
 public class Main {
     public static void main(String[] args){
-        String s = "pwwkew";
+        String s = "waxyoripwwkew";
         System.out.println(lengthOfLongestSubstring(s));
     }
 
@@ -18,7 +18,7 @@ public class Main {
             //Goes through each character of the String
             for (char chars : s.substring(izq).toCharArray()) {
                 /*
-                    Adds the character to the Set, if set.add returns false, then it saves the length of the set if it's superior than
+                    Adds the character to the Set. If set.add returns false, then it saves the length of the set if it's superior than
                     the current max
                 */
                 if (!charSet.add(chars)) {
